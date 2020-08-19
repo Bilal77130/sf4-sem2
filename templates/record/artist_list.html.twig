@@ -21,10 +21,10 @@
                         <div class="content">
                             <p>
                                 <a href="{{path('artist_list',{id:artist.id})}}" class="has-text-primary">
-                                    <strong>{{artist.nom}}</strong>
+                                    <strong>{{artist.name}}</strong>
                                 </a>
                                 <br>
-                                {{artist.description}}
+                                {{artist.description|slice(0,150)}}
                             </p>
                         </div>
                     </div>
