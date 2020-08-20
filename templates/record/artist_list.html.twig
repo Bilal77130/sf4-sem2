@@ -20,12 +20,13 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <a href="{{path('artist_list',{id:artist.id})}}" class="has-text-primary">
+                                <a href="{{path('artist_page',{id:artist.id})}}" class="has-text-primary">
                                     <strong>{{artist.name}}</strong>
                                 </a>
                                 <br>
                                 {{artist.description|slice(0,150)}}
                             </p>
+                            <p>Album(s) : {{artist.records|length}}</p>
                         </div>
                     </div>
                 </article>

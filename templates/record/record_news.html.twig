@@ -1,0 +1,15 @@
+{% extends '_template.html.twig' %}
+
+{% block title %}Nouveaux albums!{% endblock %}
+
+{% block content %}
+
+<div class="section">
+
+    <h3 class="subtititle">
+        Nouveaux albums : {{record_news|length}}
+    </h3>
+    {%  include 'record/_record_list.html.twig' with {record_list:record_news} %}
+    </div>
+</div>
+{% endblock %}
