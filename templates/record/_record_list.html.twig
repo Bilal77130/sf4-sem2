@@ -19,6 +19,10 @@
                         <a href="{{path('artist_page',{id:record.artist.id})}}">{{record.artist.name}}</a>
                     </small><br>
                     {{record.description}}
+                    <br/>
+                    Label :<a href="{{path('label_page',{id:record.getLabel().getId()})}}" class="has-text-primary">
+                        <strong> {{record.getLabel().getName()}}</strong>
+                    </a>
                 </p>
             </div>
         </div>

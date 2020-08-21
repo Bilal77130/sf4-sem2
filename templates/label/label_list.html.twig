@@ -1,0 +1,51 @@
+{% extends '_template.html.twig' %}
+
+{% block title %}Liste des Labels!{% endblock %}
+
+{% block content %}
+
+<div class="section">
+    <h1 class="title">Labels : {{label_list|length}}</h1>
+
+    <div class="columns is-multiline">
+        {% for label in label_list %}
+        <div class="column is-one-third">
+            <div class="box">
+                <article class="media">
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                            <img src="https://loremflickr.com/256/256/artist,music/all?lock={{label.id}}   " alt="Image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <a href="{{path('artist_page',{id:label.id})}}" class="has-text-primary">
+                                    <strong>{{label.name}}</strong>
+                                </a>
+                                <br>
+                               
+                            </p>
+                            <p>Album(s) : 
+                                         {% for album in label.getRelation() %}
+                                                <li>
+                                                    <a href="{{path('label_page',{id:album.id})}}" class="has-text-primary">
+                                                        <strong>{{album.title}}</strong>
+                                                    </a>
+                                                    </li>
+                                          {% endfor %}
+                            </p>
+                            <p>
+                            Label :<a href="{{path('label_page',{id:label.getId()})}}" class="has-text-primary">
+                                        <strong> {{label.getName()}}</strong>
+                                    </a>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        {% endfor %}
+    </div>        
+</div>
+{% endblock %}

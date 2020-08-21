@@ -12,7 +12,6 @@ class ArtistFixtures extends BaseFixture
        $this->createMany(50,'artist',function (){
         return (new Artist())
                 ->setName($this->faker->name)
-                // ->setPrenom($this->faker->name)
                 ->setDescription($this->faker->optional()->realText(250));
        });
    }
