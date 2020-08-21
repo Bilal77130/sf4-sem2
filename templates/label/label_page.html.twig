@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="section">
-    <h1 class="title">Label : {{label.name}}</h1>
+
 <section class="section">
 
 <a href="{{path('label_list')}}" class="button">Retour sur la page des labels</a>
@@ -22,7 +22,7 @@
                 {#{record.title}#}
             </h1>
             <h2 class="subtitle">
-                Artiste: {{label.name}}
+                Label: {{label.name}}
                 <a href="{#{path('artist_page', {id:record.artist.id})}#}">
                     {#{record.artist.name}#}
                 </a>

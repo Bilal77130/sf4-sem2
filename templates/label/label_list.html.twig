@@ -19,27 +19,18 @@
                     </div>
                     <div class="media-content">
                         <div class="content">
+                           
                             <p>
-                                <a href="{{path('artist_page',{id:label.id})}}" class="has-text-primary">
-                                    <strong>{{label.name}}</strong>
-                                </a>
-                                <br>
-                               
-                            </p>
-                            <p>Album(s) : 
-                                         {% for album in label.getRelation() %}
-                                                <li>
-                                                    <a href="{{path('label_page',{id:album.id})}}" class="has-text-primary">
-                                                        <strong>{{album.title}}</strong>
-                                                    </a>
-                                                    </li>
-                                          {% endfor %}
-                            </p>
-                            <p>
-                            Label :<a href="{{path('label_page',{id:label.getId()})}}" class="has-text-primary">
-                                        <strong> {{label.getName()}}</strong>
+                            <strong>
+                                    <a href="{{path('label_page',{id:label.getId()})}}" class="has-text-primary">
+                                        {{label.getName()}}
                                     </a>
+                            </strong>
                             </p>
+                            <p>
+                            Album(s) : {{label.getRelation()|length}}
+                            </p>
+                           
                         </div>
                     </div>
                 </article>
