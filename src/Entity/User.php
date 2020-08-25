@@ -22,6 +22,10 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
+     /**
+     * @ORM\Column(type="string", length=30, unique=true)
+     */
+    private $pseudo;
 
     /**
      * @ORM\Column(type="json")
@@ -47,6 +51,18 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }

@@ -10,6 +10,7 @@ use App\Repository\LabelRepository;
 use App\Repository\RecordRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class RecordController extends AbstractController
 {
@@ -48,7 +49,9 @@ class RecordController extends AbstractController
     /**
      * Nouveau albums
      * @Route("/news", name="record_news")
+     * 
      */
+    
     public function recordNews(RecordRepository $repository){
       
         return $this->render('record/record_news.html.twig',[
