@@ -55,7 +55,7 @@ abstract class BaseFixture extends Fixture
      protected function createMany(int $count,string $groupName, callable $factory){
         for($i=0;$i<$count;$i++){
             // on execute $factory qui doit retourner l'entité généré
-            $entity =  $factory();      
+            $entity =  $factory($i);      
             // Vérifier que l'entité soit retournée 
             if($entity==null){
                 throw new \LogicException('L\entité doit être retrounée');

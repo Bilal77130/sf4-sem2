@@ -27,24 +27,47 @@
                 <a class="navbar-item" href="{{path('artist_list')}}">
                     Artistes
                 </a>
-
+                
                 <a class="navbar-item" href="{{path('record_news')}}">
                     Nouveautés
                 </a>
-                 <a class="navbar-item" href="{{path('label_list')}}">
+              
+                <a class="navbar-item" href="{{path('label_list')}}">
                     Labels
                 </a>
+
+                
+
+
             </div>
 
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary is-small" href="#">
-                            <strong>Inscription</strong>
+                    <div class="buttons">  
+
+                        {% if is_granted("ROLE_EDITOR")%}
+                        <a class="button is-primary is-small" href="{{path('admin_dashboard')}}">
+                            Back office
                         </a>
-                        <a class="button is-light is-small" href="#">
+                        {% endif %}
+
+
+                        {% if app.user %}
+                        <a class="button is-primary is-small" href="#">
+                                <strong>{{app.user.pseudo}}</strong>
+                        </a>
+                    
+                        <a class="button is-light is-small" href="{{path('app_logout')}}">
+                                Déconnexion
+                        </a>
+                         {% else %}
+                            <a class="button is-primary is-small" href="#">
+                                <strong>Inscription</strong>
+                            </a>
+                             <a class="button is-light is-small" href="{{path('app_login')}}">
                             Connexion
                         </a>
+                        {% endif %}
                     </div>
                 </div>
 
