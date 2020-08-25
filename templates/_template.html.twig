@@ -27,10 +27,11 @@
                 <a class="navbar-item" href="{{path('artist_list')}}">
                     Artistes
                 </a>
-
+                
                 <a class="navbar-item" href="{{path('record_news')}}">
                     Nouveautés
                 </a>
+              
                  <a class="navbar-item" href="{{path('label_list')}}">
                     Labels
                 </a>
@@ -38,13 +39,25 @@
 
             <div class="navbar-end">
                 <div class="navbar-item">
+                {% if (app.user is not null) %}
+                <div class="mr-4">
+                    Bonjour  {{app.user.pseudo}}
+                </div>
+                {% endif %}
                     <div class="buttons">
+                        
                         <a class="button is-primary is-small" href="#">
                             <strong>Inscription</strong>
                         </a>
-                        <a class="button is-light is-small" href="#">
+                        {% if app.user %}
+                       <a class="button is-light is-small" href="{{path('app_logout')}}">
+                            Déconnexion
+                        </a>
+                         {% else %}
+                             <a class="button is-light is-small" href="{{path('app_login')}}">
                             Connexion
                         </a>
+                        {% endif %}
                     </div>
                 </div>
 
