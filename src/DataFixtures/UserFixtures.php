@@ -30,18 +30,22 @@ class UserFixtures extends BaseFixture
                     ->setRoles(['ROLE_ADMIN'])
                     ->setPassword($password)
                     ->setPseudo($this->faker->unique()->userName)
+                    ->confirmAccount()
+                    ->renewToken()
                     ;
         });
 
         // Utilisateurs
         $this->createMany(20,'user_user',function(int $num){
             $user = new User();
-            $password = $this->encoder->encodePassword($user,'admin'.$num);
+            $password = $this->encoder->encodePassword($user,'user'.$num);
             return $user
                         ->setEmail('user'.$num.'@kritik.fr')
                         ->setRoles([])
                         ->setPassword($password)
                         ->setPseudo($this->faker->unique()->userName)
+                        ->confirmAccount()
+                        ->renewToken()
                         ;
             });
 

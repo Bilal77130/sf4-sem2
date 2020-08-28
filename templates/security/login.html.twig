@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
     <div class="columns is-centered section">
         <div class="column is-one-third box">
             <h1 class="title has-text-primary has-text-centered">Connexion</h1>
@@ -20,7 +21,7 @@
             {% if error %}
                 <div class="notification is-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
-
+            {% include 'includes/flash.html.twig' %}
             {# formulaire de connexion #}
             <form method="post">
                 <div class="field">

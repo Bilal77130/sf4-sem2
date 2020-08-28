@@ -41,6 +41,16 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $IsConfirmed = false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $token;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,4 +140,29 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function getIsConfirmed(): ?bool
+    {
+        return $this->IsConfirmed;
+    }
+
+    public function confirmAccount(): self
+    {
+        $this->IsConfirmed = true;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function renewToken(): self
+    {
+        $this->token = bin2hex(random_bytes(16));
+
+        return $this;
+    }
+   
 }
