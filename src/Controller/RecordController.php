@@ -60,7 +60,7 @@ class RecordController extends AbstractController
     public function recordPage(Record $record, Note $note, Request $request, NoteRepository $repository){
 
         $notes =  $repository->findAllByRecord($record->getId());
-        $maNote = $repository->findOneByRecord($record->getId());
+        $maNote = $repository->findOneByRecordAndAuthor($record->getId(),$this->security->getUser());
         $now = new \DateTime();
         // dd($request->query);
 
