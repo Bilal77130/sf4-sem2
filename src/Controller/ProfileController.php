@@ -30,6 +30,7 @@ class ProfileController extends AbstractController
         $user = new User();
         $user = $em->find(User::class,$this->getUser());
 
+        
 
         $form = $this->createForm(ModificationUserDataFormType::class,$user);
         $form->handleRequest($request);

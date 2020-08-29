@@ -36,9 +36,59 @@
                 <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
                 <span>{{record.releasedAt|date('d/m/Y')}}</span>
             </h6>
+            <hr>
+            {% include 'includes/flash.html.twig' %}
+            <h1>Donnez une note : </h1>
+            {% if form_action=='add_note' %}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {{form_start(notation_form)}}
+
+                        {{form_row(notation_form.value,{label: "note"})}}
+                        {{form_row(notation_form.comment,{label: "Commentaire"})}}
+                        <button class="btn btn-success btn-bloc;" type="submit">Modifier</button>
+                {{form_end(notation_form)}}
+
+            {% endif %}
+            {% endif %}
         </div>
     </div>
 </section>
-   
+<div class="section">
+
+
+    {% if list_notes|length > 0%}
+
+            <div class="table-container">
+                <table class="table">
+                    <tr>
+                        <th>Auteur</th>
+                        <th>Commentaire </th>
+                        <th>&eacute;toile(s) </th>
+                        <th>Note </th>
+                        <th>Date </th>
+
+                    </tr>
+                    {% for note in list_notes %}
+                     <tr>
+                        <td>{{note.author.getpseudo}} </td>
+                        <td>{{note.comment}}  </td>
+                        <td>
+                            {% for i in 1..note.value %}
+                                * 
+                            {% endfor %}
+                                                      
+                        </td>
+                        <td> {{ note.value }}/10</td>
+                        <td>{{ note.createdAt|date("m/d/Y h:m:i") }} </td>
+
+                    </tr>               
+                    {% endfor %}
+                </table>
+            </div>
+
+      
+    {% endif %}
+
+</div>
 </div>
 {% endblock %}
